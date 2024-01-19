@@ -1,0 +1,21 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity F is
+  port (
+	x,y,z,clk: in std_logic;
+    	Fout: out std_logic
+	); 
+  end F;
+
+architecture behavioral of F is 
+  begin
+    process (clk)
+    begin
+	if (rising_edge(clk)) then
+           Fout <= (not x or y) and (x or not y) and (x or not z);
+	else
+	   fout <= 0;
+    end process;
+
+end behavioral;
