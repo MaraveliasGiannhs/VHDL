@@ -1,0 +1,97 @@
+--------------------TESTBENCH---------------------------
+
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+ 
+ENTITY tb_F IS
+END tb_F;
+ 
+ARCHITECTURE behavioral OF tb_F IS
+ 
+ COMPONENT F
+ PORT(
+ x: IN std_logic;
+ y: IN std_logic;
+ z: IN std_logic;
+ clk: IN std_logic;
+ Fout: OUT std_logic;
+ );
+ END COMPONENT;
+ 
+ 
+ signal x: std_logic := '0';
+ signal y: std_logic := '0';
+ signal z: std_logic := '0';
+ signal clk: std_logic := '0';
+ signal Fout : std_logic;
+ 
+BEGIN
+ uut: F PORT MAP (
+ x => x,
+ y => y,
+ z => z,
+ clk => clk,
+ Fout => Fout
+ );
+ 
+
+clock :process
+    begin
+
+    clk <='0';
+    wait for 10ns;
+    
+    clk <='1';
+    wait for 10ns;
+
+end process;
+
+
+ stim: process
+ begin
+
+ wait for 100 ns;
+ 
+ x <= '0';
+ y <= '0';
+ z <= '0';
+ wait for 10 ns;
+
+ x <= '0';
+ y <= '0';
+ z <= '1';
+ wait for 10 ns;
+ 
+ x <= '0';
+ y <= '1';
+ z <= '0';
+ wait for 10 ns;
+ 
+ x <= '0';
+ y <= '1';
+ z <= '1';
+ wait for 10 ns;
+ 
+ x <= '1';
+ y <= '0';
+ z <= '0';
+ wait for 10 ns;
+ 
+ x <= '1';
+ y <= '0';
+ z <= '1';
+ wait for 10 ns;
+ 
+ x <= '1';
+ y <= '1';
+ z <= '0';
+ wait for 10 ns;
+ 
+ x <= '1';
+ y <= '1';
+ z <= '1';
+ wait for 10 ns;
+ 
+ end process;
+ 
+END;
