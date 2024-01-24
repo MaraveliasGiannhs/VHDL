@@ -94,14 +94,14 @@ case currentState is
         end case;
 end process;
 
-InputManager: process(goingUp,goingDown,FloorSelect,currentState,nextState)
+InputManager: process(goingUp,goingDown,FloorSelect,currentState,nextState)  -- for testbench. See later
 begin
 if (goingUp = '1' or FloorSelect > CurrentFloor) then
 nextState <= MovingUp;
 currentState <= Idle;
 end if;
 
-if (goingDown = '1' or FloorSelect < CurrentFloor) then
+if (goingDown = '1' or FloorSelect < CurrentFloor) then -- for testbench. See later
 nextState <= MovingDown;
 currentState <= Idle;
 end if;
